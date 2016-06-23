@@ -123,10 +123,10 @@
                                     $(this).attr('data-opacity', keepWithin(data.opacity, 0, 1));
                                 }
                                 if( data.color ) {
-                                    $(this).val(data.color);
+                                    $(this).prop('value', data.color);
                                 }
                             } else {
-                                $(this).val(data);
+                                $(this).prop('value', data);
                             }
                             updateFromInput($(this));
                         });
@@ -563,7 +563,7 @@
         }
 
         // Update value from picker
-        input.val( value );
+        input.prop('value', value);
 
         // Set swatch color
         swatch.find('span').css({
@@ -631,7 +631,7 @@
         }
 
         // Update input value
-        if( !preserveInputValue ) input.val(value);
+        if( !preserveInputValue ) input.prop('value', value);
 
         // Determine opacity value
         if( settings.opacity ) {
@@ -1093,13 +1093,13 @@
                 .css('opacity', swatchOpacity);
 
             // Set input value
-            input.val(value);
+            input.prop('value', value);
 
             // Is it blank?
-            if( input.val() === '' ) input.val(parseInput(settings.defaultValue, true));
+            if( input.val() === '' ) input.prop('value', parseInput(settings.defaultValue, true));
 
             // Adjust case
-            input.val( convertCase(input.val(), settings.letterCase) );
+            input.prop('value', convertCase(input.val(), settings.letterCase));
 
         })
         // Handle keypresses
